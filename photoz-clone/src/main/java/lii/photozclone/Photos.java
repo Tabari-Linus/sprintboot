@@ -1,24 +1,37 @@
 package lii.photozclone;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Photos {
 
-    private Integer id;
+    private String id;
 
+    @NotEmpty
     private String fileName;
+
+    private byte[] data;
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 
     public Photos() {
     }
 
-    public Photos(Integer id, String fileName) {
+    public Photos(String id, String fileName) {
         this.id = id;
         this.fileName = fileName;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
