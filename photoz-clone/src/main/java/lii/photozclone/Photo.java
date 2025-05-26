@@ -1,14 +1,16 @@
 package lii.photozclone;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
 
-public class Photos {
+public class Photo {
 
     private String id;
 
     @NotEmpty
     private String fileName;
 
+    @JsonIgnore
     private byte[] data;
 
     public byte[] getData() {
@@ -19,10 +21,10 @@ public class Photos {
         this.data = data;
     }
 
-    public Photos() {
+    public Photo() {
     }
 
-    public Photos(String id, String fileName) {
+    public Photo(String id, String fileName) {
         this.id = id;
         this.fileName = fileName;
     }
