@@ -1,7 +1,9 @@
 package lii.photozclone;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.util.*;
@@ -25,12 +27,15 @@ public class PhotozController {
 
     @GetMapping("/photoz/{id}")
     public Photo getByid(@PathVariable String id) {
-        return db.get(id);
+        Photo photo = db.get(id);
+        if (photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return photo;
     }
 
     @DeleteMapping("/photoz/{id}")
     public void delete(@PathVariable String id) {
-        db.remove(id);
+        Photo photo = db.remove(id);
+        if (photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/photoz")
