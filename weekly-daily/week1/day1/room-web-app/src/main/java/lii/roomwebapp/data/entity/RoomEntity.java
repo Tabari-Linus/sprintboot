@@ -2,13 +2,17 @@ package lii.roomwebapp.data.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "ROOMS")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RoomEntity {
 
     @Id
@@ -18,9 +22,10 @@ public class RoomEntity {
     @Column(name = "NAME")
     private String name;
     @Column(name = "NUMBER")
-    private Integer number;
+    private String number;
     @Column(name = "BED_INFO")
     private String bedInfo;
+
 
 
 }
