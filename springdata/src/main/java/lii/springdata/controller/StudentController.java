@@ -2,6 +2,10 @@ package lii.springdata.controller;
 
 import lii.springdata.entity.Student;
 import lii.springdata.repository.StudentRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -49,8 +53,25 @@ public class StudentController {
         return studentRepository.findByAgeBetween(min, max);
     }
 
+    @GetMapping("/paged")
+    public Page<Student> getPagedStudents(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "name") String sortBy
+    ) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return studentRepository.findAll(pageable);
+    }
 
-
+    @GetMapping("/search/byNamePaged")
+    public Page<Student> searchByNamePaged(
+            @RequestParam String name,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size
+    ) {
+        Pageable pageable = PageRequest.of(page, size);
+        return studentRepository.findByNameContaining(name, pageable);
+    }
 
 
 
