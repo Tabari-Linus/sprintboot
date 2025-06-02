@@ -1,0 +1,22 @@
+### GET request to example server
+GET http://localhost:8080/api/students
+
+###
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "age": 22,
+  "email": "kofi@gmail.com"
+}
+
+### GET request to example server
+GET http://localhost:8080/api/students/2
+
+###
+GET http://localhost:8080/api/students/search/byName?name=Alice
+
+
+###
+GET http://localhost:8080/api/students/search/byAgeRange?min=18&max=25
