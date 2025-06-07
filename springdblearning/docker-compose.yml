@@ -1,0 +1,22 @@
+services:
+  db:
+    container_name: spring-data-jpa
+    image: postgres
+    environment:
+      POSTGRES_USER: mrlii
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: springdb
+    ports:
+      - "5334:5432"
+    restart: unless-stopped
+    volumes:
+      - db:/data/postpgres
+    networks:
+      - mrlii
+
+networks:
+  mrlii:
+    driver: bridge
+ 
+volumes:
+  db:
