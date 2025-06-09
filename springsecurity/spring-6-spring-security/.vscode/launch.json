@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-AdminWebApplication<admin-web>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.frankmoley.lil.admin_web.AdminWebApplication",
+      "projectName": "admin-web",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-BonesApplication<bones>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.frankmoley.lil.bones.BonesApplication",
+      "projectName": "bones",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
