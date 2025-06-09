@@ -12,3 +12,17 @@ CREATE TABLE orders(
     order_info varchar (2048) not null,
     foreign key (customer_id) references customers(customer_id)
 );
+
+CREATE TABLE users(
+    username varchar(50) not null primary key,
+    password varchar(500) not null,
+    enabled boolean not null
+);
+
+CREATE TABLE authorities (
+    username varchar(50) not null,
+    authority varchar(50) not null,
+    CONSTRAINT fk_user FOREIGN KEY (username) REFERENCES users(username)
+);
+
+CREATE UNIQUE INDEX idx_auth_username on authorities(username, authority)
